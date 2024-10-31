@@ -1,39 +1,159 @@
-.canvas-container {
-    border: 1px solid #ccc;
-    border-radius: 4px;
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --background-color: #f8fafc;
+    --border-color: #e2e8f0;
+    --text-color: #1e293b;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.app-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+}
+
+.toolbar-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--background-color);
+    border-radius: 8px;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.tools-group {
+    background: white;
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
+}
+
+.tool-btn {
+    border: 1px solid var(--border-color);
+    background: white;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.tool-btn:hover {
+    background: var(--background-color);
+}
+
+.tool-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.color-picker-wrapper, .line-width-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.color-picker {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#lineWidth {
+    width: 80px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem;
+}
+
+.color-label, .width-label {
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+}
+
+.action-btn {
+    height: 40px;
+    padding: 0 1rem;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.save-btn {
+    background: var(--primary-color);
+}
+
+.save-btn:hover {
+    background: var(--primary-hover);
+}
+
+.load-btn {
+    background: var(--secondary-color);
+}
+
+.load-btn:hover {
+    background: #475569;
+}
+
+.clear-btn {
+    background: #ef4444;
+}
+
+.clear-btn:hover {
+    background: #dc2626;
+}
+
+.canvas-wrapper {
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background: white;
 }
 
 #drawingCanvas {
     background: white;
     cursor: crosshair;
+    display: block;
+    width: 100%;
 }
 
-.toolbar {
+.spinner-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
     display: flex;
     align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-#colorPicker {
-    width: 50px;
-    height: 38px;
-    padding: 0;
-    border: none;
-    border-radius: 4px;
-}
-
-#lineWidth {
-    width: 80px;
-}
-
-#loadingSpinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.btn-group .btn.active {
-    background-color: #0d6efd;
-    color: white;
+.spinner-wrapper .spinner-border {
+    color: var(--primary-color);
+    width: 3rem;
+    height: 3rem;
 }
